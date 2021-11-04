@@ -7,12 +7,6 @@ from aiogram.types import ReplyKeyboardRemove
 from data_base import sqlite_db
 
 
-# @dp.message_handler(commands=["/start"])
-async def commands_start(message: types.Message):
-    try:
-        await bot.send_message(message.from_user.id, f'Здравствуйте, выберите необходимый пункт в меню ниже', reply_markup=kb_client) # здесь вторым паоаметром добавляем клавиатуру по вызову старт
-    except:
-        await message.reply(f'{message.chat.username}, пиши в личку боту: @LiptonTea_bot')
 
 # @dp.message_handler(commands=["/help"])
 async def commands_help(message: types.Message):
@@ -43,7 +37,6 @@ async def command_menu(message: types.Message):
 
 # Регистрация хендлеров
 def register_handlers_client(dp: Dispatcher):
-    dp.register_message_handler(commands_start, text='/start')
     dp.register_message_handler(commands_help, text='/help')
     dp.register_message_handler(command_time, text='🕑Режим работы')
     dp.register_message_handler(command_place, text='📍Расположение на карте')
